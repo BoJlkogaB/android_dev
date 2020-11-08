@@ -14,7 +14,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.perfectweather.R
-import kotlinx.android.synthetic.main.fragment_selectcity.*
+import kotlinx.android.synthetic.main.fragment_cities.*
 
 
 class CitiesFragment : Fragment() {
@@ -32,7 +32,7 @@ class CitiesFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
         citiesViewModel = ViewModelProviders.of(this).get(CitiesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_selectcity, container, false)
+        val root = inflater.inflate(R.layout.fragment_cities, container, false)
 
         val mSettings = getActivity()?.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
         for (i in 0 until mSettings?.getInt("StringArrayLength", 0)!!) {

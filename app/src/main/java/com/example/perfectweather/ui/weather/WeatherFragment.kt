@@ -25,7 +25,7 @@ import com.example.perfectweather.BuildConfig
 import com.example.perfectweather.MainActivity
 import com.example.perfectweather.R
 import kotlinx.android.parcel.Parcelize
-import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.android.synthetic.main.fragment_weather.*
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
@@ -57,7 +57,7 @@ class WeatherFragment : Fragment() {
     ): View? {
         weatherViewModel =
             ViewModelProviders.of(this).get(WeatherViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val root = inflater.inflate(R.layout.fragment_weather, container, false)
 
         val mSettings = getActivity()?.getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE)
         val URL = "http://api.openweathermap.org/data/2.5/weather?q=" + mSettings?.getString(

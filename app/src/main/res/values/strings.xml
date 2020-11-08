@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Perfect Weather</string>
-    <string name="title_home">Погода</string>
-    <string name="title_SelectCity">Выбор города</string>
+    <string name="title_weather">Погода</string>
+    <string name="title_cities">Выбор города</string>
     <string name="welcome_button">Выбрать город</string>
     <string name="deleted">Удалено</string>
     <string name="saved">Сохранено</string>

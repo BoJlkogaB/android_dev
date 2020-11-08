@@ -7,14 +7,14 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.perfectweather.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.example.perfectweather.ui.weather.WeatherFragment"
+        android:label="@string/title_weather"
+        tools:layout="@layout/fragment_weather" />
 
     <fragment
         android:id="@+id/navigation_SelectCity"
-        android:name="com.example.perfectweather.ui.celectcity.CelectCityFragment"
-        android:label="@string/title_SelectCity"
-        tools:layout="@layout/fragment_selectcity" />
+        android:name="com.example.perfectweather.ui.cities.CitiesFragment"
+        android:label="@string/title_cities"
+        tools:layout="@layout/fragment_cities" />
 
 </navigation>
