@@ -66,17 +66,17 @@ class WeatherFragment : Fragment() {
             APP_PREFERENCES_CurrentCity,
             ""
         ) + "&units=metric&lang=ru&APPID="+BuildConfig.API_KEY;
-        GetAPIData(URL, root)
+        APIData(URL, root)
 
         return root
     }
 
-    fun GetAPIData(URL: String, root: View) {
+    private fun APIData(URL: String, root: View) {
         val request: Request = Request.Builder().url(URL).build()
         okHttpClient.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call?, e: IOException?) {
                 activity?.runOnUiThread {
-                    Toast.makeText(activity, getString(R.string.connection_error), Toast.LENGTH_LONG)
+                    Toast.makeText(activity, e.toString(), Toast.LENGTH_LONG)
                         .show()
                 }
             }
@@ -85,7 +85,7 @@ class WeatherFragment : Fragment() {
             override fun onResponse(call: Call?, response: Response?) {
                 val json = response?.body()?.string()
 
-                if (JSONObject(json).getString("name") != "") {
+                if ((JSONObject(json).get("name")).toString() != "")  {
                     var weather =
                         JSONObject(JSONObject(json).getJSONArray("weather")[0].toString()).getString(
                             "main"
@@ -110,8 +110,8 @@ class WeatherFragment : Fragment() {
                         WeatherDescription_field.text = weatherParams.weatherDescription
                         Humidity_field.text = "Влажность: " + weatherParams.humidity + "%"
                         Pressure_field.text = "Давление: "+weatherParams.pressure + " мм рт. ст."
-                        WindSpeed_field.text = "Скорость ветра: "+weatherParams.pressure + "м/с"
-                        Clouds_field.text = "Облачность: "+weatherParams.pressure + "%"
+                        WindSpeed_field.text = "Скорость ветра: "+weatherParams.windspeed + "м/с"
+                        Clouds_field.text = "Облачность: "+weatherParams.clouds + "%"
 
                         when(weather) {
                             "Thunderstorm" -> {
