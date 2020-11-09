@@ -38,6 +38,8 @@ data class Weather (
     var temperature: String,
     var humidity: String,
     var pressure: String,
+    var windspeed: String,
+    var clouds: String,
     var region: String
 ): Parcelable
 
@@ -96,9 +98,11 @@ class WeatherFragment : Fragment() {
                         JSONObject(JSONObject(json).getString("main")).getString("temp").split(".")[0]
                     var humidity = JSONObject(JSONObject(json).getString("main")).getString("humidity")
                     var pressure = JSONObject(JSONObject(json).getString("main")).getString("pressure")
+                    var windspeed = JSONObject(JSONObject(json).getString("wind")).getString("speed")
+                    var clouds = JSONObject(JSONObject(json).getString("clouds")).getString("all")
                     var region = JSONObject(json).getString("name")
 
-                    weatherParams = Weather(weather, weatherDescription, temperature, humidity, pressure, region)
+                    weatherParams = Weather(weather, weatherDescription, temperature, humidity, pressure, windspeed, clouds, region)
 
                     getActivity()?.runOnUiThread {
                         Region_field.text = weatherParams.region
@@ -106,35 +110,37 @@ class WeatherFragment : Fragment() {
                         WeatherDescription_field.text = weatherParams.weatherDescription
                         Humidity_field.text = "Влажность: " + weatherParams.humidity + "%"
                         Pressure_field.text = "Давление: "+weatherParams.pressure + " мм рт. ст."
+                        WindSpeed_field.text = "Скорость ветра: "+weatherParams.pressure + "м/с"
+                        Clouds_field.text = "Облачность: "+weatherParams.pressure + "%"
 
                         when(weather) {
                             "Thunderstorm" -> {
                                 Glide.with(this@WeatherFragment).load(R.drawable.thunder).into(imageView1)
-                                SendNotify("Оставайтесь дома и ничего не бойтесь!", R.drawable.thunder)
+                                SendNotify("Тор опять куёт что-то?", R.drawable.thunder)
                             }
                             "Drizzle" -> {
                                 Glide.with(this@WeatherFragment).load(R.drawable.rainy).into(imageView1)
-                                SendNotify("Морось", R.drawable.rainy)
+                                SendNotify("Хочется плакать...", R.drawable.rainy)
                             }
                             "Rain" ->  {
                                 Glide.with(this@WeatherFragment).load(R.drawable.rainy).into(imageView1)
-                                SendNotify("Не забудьте зонт", R.drawable.rainy)
+                                SendNotify("Кажется дождик начинается", R.drawable.rainy)
                             }
                             "Snow" -> {
                                 Glide.with(this@WeatherFragment).load(R.drawable.snowy).into(imageView1)
-                                SendNotify("Время для горячего напитка", R.drawable.snowy)
+                                SendNotify("Ура! Идём строить снеговика?", R.drawable.snowy)
                             }
                             "Clouds" -> {
                                 Glide.with(this@WeatherFragment).load(R.drawable.cloudy).into(imageView1)
-                                SendNotify("Облака это не повод грустить", R.drawable.cloudy)
+                                SendNotify("Ты тоже на небе видешь проплывающего котика?", R.drawable.cloudy)
                             }
                             "Clear" -> {
                                 Glide.with(this@WeatherFragment).load(R.drawable.sunny).into(imageView1)
-                                SendNotify("Какая чудесная погода для прогулки", R.drawable.sunny)
+                                SendNotify("...городу две тысячи лет, Прожитых под светом Звезды по имени Солнце", R.drawable.sunny)
                             }
                             "Fog" -> {
                                 Glide.with(this@WeatherFragment).load(R.drawable.silent).into(imageView1)
-                                SendNotify("Будьте аккуратнее! Сильный туман", R.drawable.silent)
+                                SendNotify("Опять настройки тумана выкрутили на максимум?", R.drawable.silent)
                             }
                         }
                     }
