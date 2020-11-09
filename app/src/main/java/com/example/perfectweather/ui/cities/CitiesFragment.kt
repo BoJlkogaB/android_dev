@@ -16,7 +16,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.perfectweather.R
 import kotlinx.android.synthetic.main.fragment_cities.*
 
-
 class CitiesFragment : Fragment() {
 
     private lateinit var citiesViewModel: CitiesViewModel
@@ -110,9 +109,7 @@ class CitiesFragment : Fragment() {
                     editor?.commit();
                 }
             }
-
             override fun onNothingSelected(adapterView: AdapterView<*>?) {}
         })
     }
-
 }

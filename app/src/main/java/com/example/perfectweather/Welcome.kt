@@ -16,7 +16,6 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_welcome.*
 
-
 class Welcome : AppCompatActivity() {
 
     val APP_PREFERENCES = "WeatherApp"
@@ -54,5 +53,3 @@ class Welcome : AppCompatActivity() {
         }
     }
 }
-
-

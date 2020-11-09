@@ -30,7 +30,6 @@ import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
 
-
 @Parcelize
 data class Weather (
     var weather: String,
